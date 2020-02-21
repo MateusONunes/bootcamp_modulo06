@@ -1,0 +1,2 @@
+npm install browser-sync npm-run-all -D
+
