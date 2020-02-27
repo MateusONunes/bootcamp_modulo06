@@ -1,2 +1,3 @@
 npm install browser-sync npm-run-all -D
 
+https://github.com/Rocketseat/bootcamp-launchbase-06
