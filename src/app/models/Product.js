@@ -64,6 +64,10 @@ module.exports = {
 //        console.log(value)
 
         return db.query(query, values)
+    },
+    delete(id) {
+        console.log(id)
+        return db.query('delete from products where id = $1', [id])
     }
 
 }
