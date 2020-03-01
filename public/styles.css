@@ -271,9 +271,34 @@ form .item #photos-preview {
 form .item #photos-preview img {
     width: 100%;
     height: 150px;
+    object-fit: contain; /*Strech*/
+}
 
-    object-fit: contain;
+#photos-preview .photo {
+    position: relative; /*<<==parece que isto torna possível aplicar tamanhos, positions nos filhos - parece que no filho é necessário passar "position: absolute" */
+}
 
+#photos-preview .photo i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: red;
+    width: 100%;
+    height: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    font-size: 500%;
+    cursor: pointer;
+
+    transition: opacity 200ms;
+
+    opacity: 0;
+}
+
+#photos-preview .photo:hover i {
+    opacity: 1;
 }

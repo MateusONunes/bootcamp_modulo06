@@ -23,11 +23,9 @@ const PhotosUpload = {
     
     handleFileInput(event) {/*Aula Upload de imagens/ 1 - Gerenciador de imagens do Front end/ "Lendo imagens com Java Script no Front end"*/
 
-        const {files: fileList } = event.target
+        if (PhotosUpload.hasLimit(event)) return
 
-        if (PhotosUpload.hasLimit(event, fileList)) return
-
-        Array.from(fileList).forEach(file => {
+        Array.from(event.target.files).forEach(file => {
             const reader = new FileReader()
            
             reader.onload = () => {
@@ -43,19 +41,10 @@ const PhotosUpload = {
             reader.readAsDataURL(file)            
         });
     },
-
-    getContainer(image) {
-        const div = document.createElement('div')
-        div.classList.add('photo')
-        div.onclick = () => alert('remover foto')
-        div.appendChild(image)
-
-        return div
-    },
-    hasLimit(event, fileList) {
+    hasLimit(event) {
         const  uploadLimit  = PhotosUpload.uploadLimit
 
-        if (fileList.length > uploadLimit) {
+        if ( event.target.files.length > uploadLimit) {
             alert(`Envie no máximo ${uploadLimit} fotos`)
             event.preventDefault() // bloqueia o evento
             return true
@@ -63,5 +52,22 @@ const PhotosUpload = {
 
         return false
 
+    },
+    getContainer(image) {
+        const div = document.createElement('div')
+        div.classList.add('photo')
+        div.onclick = () => alert('remover foto')
+        div.appendChild(image)
+
+        div.appendChild(PhotosUpload.getRemoveButton())
+
+        return div
+    },
+    getRemoveButton() {
+        const button = document.createElement('i')
+        button.classList.add('material-icons')
+        button.innerHTML = "close"
+        return button
     }
+
 }
