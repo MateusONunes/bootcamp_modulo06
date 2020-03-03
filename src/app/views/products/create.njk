@@ -3,7 +3,8 @@
 {% block content %}
 
 <section class="container form">
-    <form method="POST" action="/products">
+    
+    <form method="POST" action="/products" enctype="multipart/form-data"> <!-- para trabalhar com upload de imagens => enctype="multipart/form-data"  !-->
         <div class="header">
             <h3>Cadastrar Produto {{productId}}</h3>
         </div>
