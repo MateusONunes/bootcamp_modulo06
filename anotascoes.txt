@@ -5,3 +5,5 @@ https://github.com/Rocketseat/bootcamp-launchbase-06
 --inspect server-js
 
  npm install multer
+
+ Arrow Functions
